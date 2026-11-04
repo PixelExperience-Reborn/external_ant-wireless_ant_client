@@ -20,6 +20,6 @@ Date: 2026-11-04. **Source-only audit; legacy ANT app/HIDL is NOT selected for b
 ## Current audit gates
 
 - [x] Historical app/build/permission and mandatory HAL declaration identified.
-- [x] Host-only static source validation workflow authored, with no service installation.
+- [x] Host-only static source validation [GitHub Actions CI PASS #41802441653](https://github.com/PixelExperience-Reborn/external_ant-wireless_ant_client/actions/runs/41802441653); the app was not installed, no physical ANT+ interface or HIDL service was claimed.
 - [ ] Real mondrian vendor ANT capability and installed HAL proven.
 - [ ] Modern AOSP17 app/Soong/VINTF/SELinux/CTS integration, if genuinely required.
