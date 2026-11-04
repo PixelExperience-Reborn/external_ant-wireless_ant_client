@@ -1,0 +1,32 @@
+name: P2 archived ANT client HIDL and mandatory VINTF audit
+
+on:
+  push:
+    branches:
+      - audit/a17-mondrian-ant-client-20261104
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ant-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            .github
+            docs
+            tools
+            Android.bp
+            AndroidManifest.xml
+            vintf/compatibility_matrix.xml
+            sepolicy/ANTHALService.te
+            src/com/dsi/ant/hidl/HidlClient.java
+          sparse-checkout-cone-mode: false
+      - name: Verify old ANT app privilege and mandatory HAL risks without installing it
+        run: python3 tools/verify_a17_ant_client_legacy.py
